@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Date validation for end dates before start date.</description>
+        <field>end_date</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Validate Start and End Dates - Client</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || !newValue) {
+        return;
+    }
+
+    var startDate = g_form.getValue('start_date');
+    if (startDate && newValue < startDate) {
+        g_form.showFieldMsg('end_date', 'End date must be later than start date!', 'error');
+        g_form.setValue('end_date', '');
+    } else {
+        g_form.hideFieldMsg('end_date');
+    }
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-07 15:27:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7b4fb011e4f703107f449bcab489f6ce</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Validate Start and End Dates - Client</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Loaner Request" source="x_cdltd_loaner_r_0">3343ac8b48a303107f447e681fb6ccf3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner Request">3343ac8b48a303107f447e681fb6ccf3</sys_scope>
+        <sys_update_name>sys_script_client_7b4fb011e4f703107f449bcab489f6ce</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-07 15:27:53</sys_updated_on>
+        <table>x_cdltd_loaner_r_0_loaner_request</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
